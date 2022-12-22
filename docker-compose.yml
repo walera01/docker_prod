@@ -1,0 +1,22 @@
+version: "3"
+services:
+  my_root:
+    image: my_root
+    restart: always
+    ports:
+      - "3307:3306"
+
+  my_postgres:
+    image: my_postgres
+    restart: always
+    ports:
+      - "5431:5432"
+
+  skript:
+    build: .
+    command: sh -c "sleep 15s"; python Test_migration.py
+    volumes:
+      - .:/code
+    depends_on:
+      - my_root
+      - my_postgres
