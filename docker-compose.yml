@@ -1,22 +1,32 @@
-version: "3"
+version: "3.7"
 services:
   my_root:
-    image: my_root
+    image: my_root2
+    container_name: my_root
+    environment:
+      MYSQL_ROOT_PASSWORD: 'admin'
+      MYSQL_DATABASE: 'my_bd'
     restart: always
     ports:
-      - "3307:3306"
+      - "3310:3306"
 
   my_postgres:
+    container_name: my_postgres
     image: my_postgres
     restart: always
     ports:
-      - "5431:5432"
+      - "5400:5432"
 
   skript:
-    build: .
-    command: sh -c "sleep 15s"; python Test_migration.py
-    volumes:
-      - .:/code
+    image: skpipt
+    container_name: skript
+    command: sh -c "sleep 30s; python Test_migration.py"
     depends_on:
       - my_root
       - my_postgres
+
+
+networks:
+    default:
+      name: self_network
+      driver: bridge
