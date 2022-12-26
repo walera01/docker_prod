@@ -1,24 +1,25 @@
 version: "3.7"
 services:
   my_root:
-    image: my_root2
+    image: yelowduck/my_root
     container_name: my_root
     environment:
       MYSQL_ROOT_PASSWORD: 'admin'
       MYSQL_DATABASE: 'my_bd'
+
     restart: always
     ports:
-      - "3310:3306"
+      - "3307:3306"
 
   my_postgres:
     container_name: my_postgres
-    image: my_postgres
+    image: yelowduck/my_postgres
     restart: always
     ports:
-      - "5400:5432"
+      - "5432:5432"
 
   skript:
-    image: skpipt
+    image: yelowduck/my_skript
     container_name: skript
     command: sh -c "sleep 30s; python Test_migration.py"
     depends_on:
