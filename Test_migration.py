@@ -9,10 +9,10 @@ def main():
     try:
         connection = pymysql.connect(
             host = "my_root",
-            password = password,
+            password = "admin",
             port=3306,
-            user=user,
-            database=db_name,
+            user="root",
+            database="my_bd",
             cursorclass = pymysql.cursors.DictCursor,
         )
         print("successfully connect mysql ")
@@ -20,7 +20,7 @@ def main():
         try:
             connection2 = psycopg2.connect(
                 host="my_postgres",
-                password=password,
+                password="admin",
                 port=5432,
                 user="postgres",
                 database="postgres",
