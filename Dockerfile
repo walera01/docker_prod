@@ -5,7 +5,7 @@ ENV PYTHONUNBUFFERED 1
 
 WORKDIR /usr/src/migration
 
-COPY ../doc.txt /usr/src/doc.txt
+COPY doc.txt /usr/src/doc.txt
 RUN pip install -r /usr/src/doc.txt
 
 COPY .. /usr/src/migration
