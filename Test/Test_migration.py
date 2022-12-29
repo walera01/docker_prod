@@ -1,8 +1,6 @@
 import pymysql
 import psycopg2
 
-from config import host,password,user,db_name
-
 
 def main():
 #connect mysql
